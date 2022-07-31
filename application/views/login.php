@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>POLTEKKES KEMENKES MALUKU</title>
+  <title>Kantor</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
@@ -14,7 +14,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?= base_url() ?>"><b>POLTEKKES KEMENKES</b> MALUKU</a>
+      <a href="<?= base_url() ?>"><b>Kantor</b></a>
     </div>
     <div class="card">
       <div class="card-body login-card-body">

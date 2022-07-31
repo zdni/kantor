@@ -1,6 +1,6 @@
 
     <footer class="main-footer">
-      <strong>POLTEKKES KEMENKES MALUKU &copy; 2022 </strong>
+      <strong>Kantor &copy; 2022 </strong>
     </footer>
   </div>
 
@@ -23,7 +23,7 @@
     if( '<?= $this->session->flashdata('alert') ?>' == 'success' ) Swal.fire( 'Berhasil!', '<?= $this->session->flashdata('message') ?>', 'success' );
     if( '<?= $this->session->flashdata('alert') ?>' == 'warning' ) Swal.fire( 'Peringatan!', '<?= $this->session->flashdata('message') ?>', 'warning' );
     if( '<?= $this->session->flashdata('alert') ?>' == 'error' ) Swal.fire( 'Gagal!', '<?= $this->session->flashdata('message') ?>', 'error' );
-    if( "<?php echo $this->session->flashdata('logout') != null ?>" ) setTimeout(() => { window.location.replace("<?= base_url('auth/logout') ?>") }, 5000);
+    if( "<?php echo $this->session->flashdata('logout') != null ?>" ) setTimeout(() => { window.location.replace("<?= base_url('auth/logout') ?>") }, 1500);
 
     const menu_id = "<?= $menu_id ?>";
     const menu_link = document.getElementById( menu_id );

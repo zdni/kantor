@@ -1,7 +1,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="<?= base_url() ?>" class="brand-link">
-      <img src="<?= base_url('assets/') ?>img/logo.png" alt="Logo POLTEKKES KEMENKES MALUKU" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Poltekkes</span>
+      <img src="<?= base_url('assets/') ?>img/logo.png" alt="Logo Kantor" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Kantor</span>
     </a>
 
     <div class="sidebar">
@@ -43,13 +43,14 @@
           </li>
           <?php endif; ?>
           <li class="nav-item">
-            <a href="<?= base_url('admin/laboratories') ?>" class="nav-link" id="laboratories_index">
+            <a href="<?= base_url('admin/sectors') ?>" class="nav-link" id="sectors_index">
               <i class="nav-icon fas fa-flask"></i>
               <p>
-                Laboratorium
+                Bidang
               </p>
             </a>
           </li>
+          <li class="nav-header">Informasi</li>
           <li class="nav-item">
             <a href="<?= base_url('admin/articles') ?>" class="nav-link" id="articles_index">
               <i class="nav-icon fas fa-newspaper"></i>
@@ -59,18 +60,36 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url('admin/announcements') ?>" class="nav-link" id="announcements_index">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pengumuman
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Galeri</li>
+          <li class="nav-item">
             <a href="<?= base_url('admin/galleries') ?>" class="nav-link" id="galleries_index">
               <i class="nav-icon fas fa-image"></i>
               <p>
-                Galeri
+                Foto
               </p>
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url('admin/videos') ?>" class="nav-link" id="videos_index">
+              <i class="nav-icon fas fa-video"></i>
+              <p>
+                Video
+              </p>
+            </a>
+          </li>
+          <li class="nav-header"></li>
+          <li class="nav-item">
             <a href="<?= base_url('admin/documents') ?>" class="nav-link" id="documents_index">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Dokumen
+                Regulasi
               </p>
             </a>
           </li>
@@ -79,14 +98,6 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Pesan Pengunjung
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/questionnaires') ?>" class="nav-link" id="questionnaires_index">
-              <i class="nav-icon fas fa-question-circle"></i>
-              <p>
-                Kuisioner
               </p>
             </a>
           </li>

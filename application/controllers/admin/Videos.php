@@ -14,8 +14,9 @@ class Videos extends User_Controller {
 
 	public function index()
     {
-        // $this->data['page'] = 'Beranda';
-        // $this->render('admin/dashboard');
+        $this->data['videos'] = $this->videos_model->videos()->result();
+        $this->data['page'] = 'Daftar Video';
+        $this->render('admin/videos');
     }
 
     public function create()
@@ -30,18 +31,16 @@ class Videos extends User_Controller {
             $link = $this->input->post('link');
             $title = $this->input->post('title');
             $is_show = $this->input->post('is_show');
-            $laboratory_id = $this->input->post('laboratory_id');
 
             $data['title'] = $title;
             $data['is_show'] = $is_show;
             $data['link'] = $link;
-            $data['laboratory_id'] = $laboratory_id;
             
             if( $this->videos_model->create( $data ) )
             {
                 $this->session->set_flashdata('alert', 'success');
                 $this->session->set_flashdata('message', 'Berhasil Membuat Data Video Baru!');
-                return redirect( base_url('admin/laboratories/detail/') . $laboratory_id );
+                return redirect( base_url('admin/videos') );
             } else {
                 $message = 'Gagal Membuat Data Video Baru!';
             }
@@ -49,12 +48,12 @@ class Videos extends User_Controller {
 
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/laboratories') );
+        return redirect( base_url('admin/videos') );
     }
 
     public function update()
     {
-        if( !$_POST ) return redirect( base_url('admin/laboratories') );
+        if( !$_POST ) return redirect( base_url('admin/videos') );
 
         $this->form_validation->set_rules('id', 'Id Video', 'required');
         $this->form_validation->set_rules('title', 'Judul Video', 'required');
@@ -68,7 +67,6 @@ class Videos extends User_Controller {
             $title = $this->input->post('title');
             $is_show = $this->input->post('is_show');
             $link = $this->input->post('link');
-            $laboratory_id = $this->input->post('laboratory_id');
             
             $data['title'] = $title;
             $data['is_show'] = $is_show;
@@ -85,12 +83,12 @@ class Videos extends User_Controller {
 
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/laboratories/detail/') . $laboratory_id );
+        return redirect( base_url('admin/videos/') );
     }
 
     public function delete()
     {
-        if( !$_POST ) return redirect( base_url('admin/laboratories') );
+        if( !$_POST ) return redirect( base_url('admin/videos') );
 
         $alert = 'error';
         $message = 'Gagal Menghapus Video!';
@@ -109,6 +107,6 @@ class Videos extends User_Controller {
         
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/laboratories/detail/') . $laboratory_id );
+        return redirect( base_url('admin/videos') );
     }
 }

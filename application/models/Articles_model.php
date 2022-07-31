@@ -49,6 +49,30 @@ class Articles_model extends CI_Model {
         );
         $this->db->order_by('id', "desc");
         $this->db->order_by('post_date', "desc");
+        $this->db->where( $this->_table . '.type', 'article');
+        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
+        return $this->db->get( $this->_table );
+    }
+
+    public function announcement( $id = NULL, $slug = NULL )
+    {
+        if( $id ) $this->db->where( $this->_table . '.id', $id);
+        if( $slug ) $this->db->where( $this->_table . '.slug', $slug);
+        return $this->announcements();
+    }
+
+    public function announcements( $start = NULL, $end = NULL )
+    {
+        $this->db->select( $this->_table . '.*' );
+        $this->db->select( 'users.name AS username' );
+        $this->db->join(
+            'users',
+            'users.id = ' . $this->_table . '.create_by',
+            'join'
+        );
+        $this->db->order_by('id', "desc");
+        $this->db->order_by('post_date', "desc");
+        $this->db->where( $this->_table . '.type', 'announcement');
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
