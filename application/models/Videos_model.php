@@ -37,16 +37,16 @@ class Videos_model extends CI_Model {
         return $this->videos();
     }
 
-    public function videos_show( $laboratory_id = NULL, $is_show = NULL )
+    public function videos_show( $sector_id = NULL, $is_show = NULL )
     {
         if( !is_null($is_show) ) $this->db->where('is_show', $is_show);
-        return $this->videos( $laboratory_id );
+        return $this->videos( $sector_id );
     }
 
-    public function videos( $laboratory_id = NULL, $start = NULL, $end = NULL )
+    public function videos( $sector_id = NULL, $start = NULL, $end = NULL )
     {
         $this->db->select( $this->_table . '.*' );
-        if( $laboratory_id ) $this->db->where('laboratory_id', $laboratory_id);
+        if( $sector_id ) $this->db->where('sector_id', $sector_id);
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }

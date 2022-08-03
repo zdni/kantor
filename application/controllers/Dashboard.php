@@ -13,11 +13,9 @@ class Dashboard extends Visitor_Controller
             'facilities_model',
             'galleries_model',
             'heros_model',
-            'laboratories_model',
+            'sectors_model',
             'messages_model',
-            'moduls_model',
             'profile_model',
-            'questionnaires_model',
             'videos_model',
         ]);
 
@@ -27,61 +25,34 @@ class Dashboard extends Visitor_Controller
         $this->data['institut'] = file_get_contents( './uploads/profile/institut.html' );
         $this->data['telepon'] = file_get_contents( './uploads/profile/telepon.html' );
 
-        $laboratories = $this->laboratories_model->laboratories()->result();
-        unset($laboratories[0]);
+        $sectors = $this->sectors_model->sectors()->result();
         $this->data['menu_downloads'] = $this->downloads_model->downloads()->result();
-        $this->data['menu_laboratories'] = $laboratories;
+        $this->data['menu_sectors'] = $sectors;
         $this->data['menu_profiles'] = $this->profile_model->profile()->result();
-        $this->data['questionnaire'] = $this->questionnaires_model->last_questionnaire( 1 )->row();
 	}
 
     public function index()
     {
+        $profile = $this->profile_model->profile()->row();
+
+        if( file_exists( './uploads/profile/' . $profile->file ) )
+        {
+            $profile->file_content = file_get_contents( './uploads/profile/' . $profile->file );
+        }
+        $this->data['profile'] = $profile;
+        $this->data['total'] = (object) [
+            'document' => $this->documents_model->documents()->num_rows(),
+            'sector' => $this->sectors_model->sectors()->num_rows(),
+            'article' => $this->articles_model->articles()->num_rows(),
+            'gallery' => $this->galleries_model->galleries()->num_rows(),
+        ];
+        $this->data['sectors'] = $this->sectors_model->sectors()->result();
         $this->data['articles'] = $this->articles_model->articles( 0, 3 )->result();
-        $this->data['galleries'] = $this->galleries_model->galleries( 0, 3 )->result();
         $this->data['heros'] = $this->heros_model->heros()->result();
-        $this->data['videos'] = $this->videos_model->videos( NULL, 0, 3 )->result();
+        $this->data['galleries'] = $this->galleries_model->galleries( 0, 2 )->result();
+        $this->data['videos'] = $this->videos_model->videos( NULL, 0, 2 )->result();
         
         $this->render('index');
-    }
-
-    public function contact()
-    {
-        $this->render('contact');
-    }
-
-    public function documents( $download_id = NULL )
-    {
-        if( !$download_id ) return redirect( base_url() );
-        $this->data['documents'] = $this->documents_model->documents( $download_id )->result();
-    
-        $this->render('documents');
-    }
-
-    public function facilities()
-    {
-        $this->data['facilities'] = $this->facilities_model->facilities()->result();
-        $this->render('facilities');
-    }
-
-    public function laboratory()
-    {
-        $slug = isset( $_GET['slug'] ) ? $_GET['slug'] : NULL;
-        if( !$slug ) return redirect( base_url() );
-
-        $laboratory = $this->laboratories_model->laboratory( NULL, $slug )->row();
-        $laboratory->file_content = '';
-
-        if( file_exists( './uploads/laboratories/' . $laboratory->file ) )
-        {
-            $laboratory->file_content = file_get_contents( './uploads/laboratories/' . $laboratory->file );
-        }
-
-        $this->data['laboratory'] = $laboratory;
-        $this->data['moduls'] = $this->moduls_model->moduls_show( $laboratory->id, 1 )->result();
-        $this->data['videos'] = $this->videos_model->videos_show( $laboratory->id, 1 )->result();
-        
-        $this->render('laboratory');
     }
 
     public function profile()
@@ -99,6 +70,44 @@ class Dashboard extends Visitor_Controller
 
         $this->data['profile'] = $profile;
         $this->render('profile');
+    }
+
+    public function sector()
+    {
+        $slug = isset( $_GET['slug'] ) ? $_GET['slug'] : NULL;
+        if( !$slug ) return redirect( base_url() );
+
+        $sector = $this->sectors_model->sector( NULL, $slug )->row();
+        $sector->file_content = '';
+
+        if( file_exists( './uploads/sectors/' . $sector->file ) )
+        {
+            $sector->file_content = file_get_contents( './uploads/sectors/' . $sector->file );
+        }
+
+        $this->data['sector'] = $sector;
+        
+        $this->render('sector');
+    }
+
+    public function gallery()
+    {
+        $slug = isset( $_GET['slug'] ) ? $_GET['slug'] : NULL;
+        if( !$slug ) return redirect( base_url() );
+        
+        if( $slug == 'photos' ) {
+            $title = 'Galeri Foto';
+            $datas = $this->galleries_model->galleries()->result();
+        } elseif( $slug == 'videos' ) {
+            $title = 'Galeri Video';
+            $datas = $this->videos_model->videos()->result();
+        } else {
+            return redirect( base_url() );
+        }
+
+        $this->data['title'] = $title;
+        $this->data['datas'] = $datas;
+        $this->render('gallery');
     }
 
     public function articles()
@@ -129,6 +138,51 @@ class Dashboard extends Visitor_Controller
         $this->data['new_articles'] = $this->articles_model->articles( 0, 3 )->result();
         $this->data['article'] = $article;
         $this->render('article');
+    }
+
+    public function announcements()
+    {
+        $page = isset( $_GET['page'] ) ? $_GET['page'] : 0;
+
+        $announcements = $this->articles_model->announcements( ($page*10), ( ($page*10) + 9) )->result();
+        $this->data['announcements'] = $announcements;
+        $this->data['new_announcements'] = $this->articles_model->announcements( 0, 3 )->result();
+        $this->data['page'] = $page;
+        $this->data['total'] = count( $this->articles_model->announcements(  )->result() );
+
+        $this->render('announcements');
+    }
+
+    public function announcement(  )
+    {
+        $slug = isset( $_GET['slug'] ) ? $_GET['slug'] : NULL;
+        if( !$slug ) return redirect( base_url() );
+
+        $announcement = $this->articles_model->announcement( NULL, $slug )->row();
+        if( !$announcement ) return redirect( base_url() );
+        if( file_exists( './uploads/announcements/files/' . $announcement->file ) )
+        {
+            $announcement->file_content = file_get_contents( './uploads/announcements/files/' . $announcement->file );
+        }
+
+        $this->data['new_announcements'] = $this->articles_model->announcements( 0, 3 )->result();
+        $this->data['announcement'] = $announcement;
+        $this->render('announcement');
+    }
+
+    public function documents( $download_id = NULL )
+    {
+        if( !$download_id ) return redirect( base_url() );
+        $this->data['download'] = $this->downloads_model->download( $download_id )->row();
+        $this->data['documents'] = $this->documents_model->documents( $download_id )->result();
+    
+        $this->render('documents');
+    }
+
+    public function facilities()
+    {
+        $this->data['facilities'] = $this->facilities_model->facilities()->result();
+        $this->render('facilities');
     }
     
     public function send_message()
@@ -168,7 +222,7 @@ class Dashboard extends Visitor_Controller
 
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('dashboard/contact') );
+        return redirect( base_url('dashboard') );
     }
 
 }

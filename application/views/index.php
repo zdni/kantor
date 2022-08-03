@@ -1,154 +1,255 @@
-			<div role="main" class="main">
-				<section class="section section-funnel border-0 m-0 p-0">
-					<div class="owl-carousel-wrapper" style="height: 991px;">
-						<div class="owl-carousel dots-inside dots-horizontal-center custom-dots-style-1 show-dots-hover show-dots-xs nav-style-1 nav-inside nav-inside-plus nav-dark nav-lg nav-font-size-lg show-nav-hover mb-0" data-plugin-options="{'responsive': {'0': {'items': 1, 'dots': true, 'nav': false}, '479': {'items': 1, 'dots': true}, '768': {'items': 1, 'dots': true}, '979': {'items': 1}, '1199': {'items': 1}}, 'loop': false, 'autoHeight': false, 'margin': 0, 'dots': true, 'dotsVerticalOffset': '-250px', 'nav': false, 'animateIn': 'fadeIn', 'animateOut': 'fadeOut', 'mouseDrag': false, 'touchDrag': false, 'pullDrag': false, 'autoplay': true, 'autoplayTimeout': 7000, 'autoplayHoverPause': true, 'rewind': true}">
-							<?php foreach ($heros as $hero) { ?>
-								<div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
-									<div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url(<?= base_url('uploads/heros/') . $hero->image ?>); background-size: cover; background-position: center;"></div>
-									<div class="container position-relative z-index-3 pb-5 h-100">
-										<div class="row align-items-center pb-5 h-100">
-											<div class="col-md-10 col-lg-6 text-center text-md-end pb-5 ms-auto">
-											</div>
-										</div>
-									</div>
-								</div>
-							<?php } ?>
-						</div>
-					</div>
-					<div class="section-funnel-layer-bottom d-none d-xl-block z-index-1">
-						<div class="section-funnel-layer bg-light"></div>
-						<div class="section-funnel-layer bg-light"></div>
-					</div>
-				</section>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center" style="background: url('<?= base_url('uploads/heros/') . $heros[0]->image ?>') top center; background-size: cover;">
+    <div class="container">
+    </div>
+  </section><!-- End Hero -->
+  <main id="main">
 
-				<div class="cards custom-cards container z-index-2">
-					<div class="cards-container row justify-content-center justify-content-xl-between w-100 my-5 mt-xl-0 mx-0">
-						<?php foreach ($galleries as $gallery) { ?>
-							<div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
-								<div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
-									<div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-										<img src="<?= base_url('uploads/galleries/') . $gallery->image ?>" alt="Thumbnail Galeri" width="100%">
-										<h4 class="card-title mb-1 font-weight-bold"><?= $gallery->title ?></h4>
-										<p class="card-text text-center"><?= $gallery->description ?></p>
-									</div>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-				</div>
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container"></div>
+    </section><!-- End Why Us Section -->
 
-				<!-- <section class="patient-reviews p-relative overflow-hidden lazyload m-0" data-bg-src="<?= base_url('uploads/articles/thumbnails/') . $article->thumbnail ?>">
-					<div class="container">
-						<div class="row">
-							<?php if( $article ): ?>
-								<div class="col-xs-12 col-xl-6 p-relative bg-color-light z-index-1">
-									<p class="text-uppercase p-0 m-0"><?= date('d M Y', strtotime($article->post_date)) ?></p>
-									<h3 class="font-weight-bold text-color-quaternary mb-2 p-0 text-capitalize"><?= $article->title ?></h3>
-									<p class="p-0 m-0 font-weight-normal"><?= $article->description ?></p>
-									<a href="<?= base_url('dashboard/article/') . $article->slug ?>" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Selengkapnya</a>
-									<div style="height: 340px;"></div>
-								</div>
-								<div class="col-md-6 col-lg-6 p-relative overflow-hidden col-cutting-patient-reviews"></div>
-							<?php endif; ?>
-						</div>
-					</div>
-				</section> -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
 
-				<section class="medical-services py-5 p-relative overflow-hidden lazyload" data-bg-src="<?= base_url('assets/visitor/img/demos/medical-2/bg/bg-3.png') ?>">
-					<div class="container">
-						<div class="row">
-							<div class="col pt-4">
-								<p class="text-uppercase mb-0 text-color-light appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Berita</p>
-								<h3 class="text-color-quaternary mb-2 text-color-light font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Berita Terkini</h3>
-							</div>
-						</div>
-						<div class="row justify-content-center justify-lg-content-between">
-							<?php if( count($articles) ): ?>
-								<?php foreach ($articles as $article) { ?>
-									<div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-										<article>
-											<div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-												<div class="card-body p-4 z-index-1">
-													<a href="<?= base_url('dashboard/article?slug=') . $article->slug ?>">
-														<img class="card-img-top border-radius-0" src="<?= base_url('uploads/articles/thumbnails/') . $article->thumbnail ?>" alt="Thumbnail Berita">
-													</a>
-													<p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="<?= $article->post_date ?>"><?= date('d M Y', strtotime( $article->post_date )) ?></time> <span class="opacity-3 d-inline-block px-2">|</span> <?= $article->username ?></p>
-													<div class="card-body p-0">
-														<h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="<?= base_url('dashboard/article?slug=') . $article->slug ?>"><?= $article->title ?></a></h4>
-														<p class="card-text mb-3"><?= $article->description ?></p>
-														<a href="<?= base_url('dashboard/article?slug=') . $article->slug ?>" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Selengkapnya</a>
-													</div>
-												</div>
-											</div>
-										</article>
-									</div>
-								<?php } ?>
-							<?php else: ?>
-								<div class="row justify-content-center">
-									<div class="col">
-										<div class="row justify-content-center" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-											<img src="<?= base_url('assets/img/not-found.png') ?>" alt="" style="width: 450px !important;">
-										</div>
-										<h5 class="text-center text-white" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">Belum ada Berita Terkini.</h5>
-									</div>
-								</div>
-							<?php endif; ?>
-						</div>
-					</div>
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative" style='background: url("<?= base_url('uploads/heros/') . $heros[1]->image ?>") center center no-repeat; background-size: cover;'>
+          </div>
 
-					<div class="container">
-						<div class="row">
-							<div class="col text-center pb-lg-5 mb-lg-5">
-							</div>
-						</div>
-					</div>
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3><?= $profile->title ?></h3>
+            <?= $profile->file_content ?>
 
-					<div class="section-funnel-layer-bottom">
-						<div class="section-funnel-layer bg-color-light"></div>
-						<div class="section-funnel-layer bg-color-light"></div>
-					</div>
-				</section>
+          </div>
+        </div>
 
-				<section class="our-blog pt-5 pt-lg-0 pb-lg-5 mb-5 p-relative bg-color-light">
-					<div class="container">
-						<div class="row">
-							<div class="col">
-								<p class="text-uppercase mb-0 d-block text-center text-uppercase appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Bahan Ajar</p>
-								<h3 class="text-color-quaternary mb-2 d-block text-center font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Video Terbaru</h3>
-							</div>
-						</div>
-						<div class="row justify-content-center justify-lg-content-between">
-							<?php if( count($videos) ): ?>
-								<?php foreach ($videos as $video) { ?>
-									<div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-										<article>
-											<div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-												<div class="card-body p-4 z-index-1">
-													<a href="<?= $video->link ?>" target="_blank">
-														<?php $explode = explode( "v=", $video->link ); $id = $explode[1]; $source = "http://img.youtube.com/vi/" . $id . "/0.jpg" ?>
-														<img class="card-img-top border-radius-0" src="<?= $source ?>" alt="Card Image">
-													</a>
-													<div class="card-body p-0">
-														<h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="<?= $video->link ?>" target="_blank"><?= $video->title ?></a></h4>
-														<a href="<?= $video->link ?>" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3" target="_blank">Nonton Video</a>
-													</div>
-												</div>
-											</div>
-										</article>
-									</div>
-								<?php } ?>
-							<?php else: ?>
-								<div class="row justify-content-center">
-									<div class="col">
-										<div class="row justify-content-center" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-											<img src="<?= base_url('assets/img/not-found.png') ?>" alt="" style="width: 450px !important;">
-										</div>
-										<h5 class="text-center" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">Belum ada video bahan ajar.</h5>
-									</div>
-								</div>
-							<?php endif; ?>
-						</div>
-					</div>
-				</section>
+      </div>
+    </section><!-- End About Section -->
 
-			</div>
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="fas fa-newspaper"></i>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $total->article ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Berita</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="far fa-hospital"></i>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $total->sector ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Bidang</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-flask"></i>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $total->gallery ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Galeri</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="<?= $total->document ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Regulasi</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Berita</h2>
+          <a href="<?= base_url('dashboard/articles') ?>">Lihat Lainnya...</a>
+        </div>
+
+        <div class="row">
+          <?php foreach ($articles as $article) { ?>
+            <div class="col-12 col-md-4">
+              <div class="card">
+                <img src="<?= base_url('uploads/articles/thumbnails/') . $article->thumbnail ?>" class="card-img-top" alt="<?= "Gambar " . $article->title ?>">
+                <div class="card-body">
+                  <h5 class="card-title"><?= $article->title ?></h5>
+                  <p class="card-text"><?= $article->description ?></p>
+                  <a href="<?= base_url('dashboard/article?slug=') . $article->slug ?>" class="btn btn-primary">Baca Selengkapnya</a>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Foto & Video</h2>
+          <a href="<?= base_url('dashboard/photos') ?>">Lihat Lainnya...</a>
+        </div>
+
+        <div class="row">
+          <?php foreach( $galleries as $gallery ){ ?>
+            <div class="col-lg-6">
+              <div class="member d-flex align-items-start">
+                <div class="pic"><img src="<?= base_url('uploads/galleries/') . $gallery->image ?>" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4><?= $gallery->title ?></h4>
+                  <span><?= date( 'd M Y', strtotime($gallery->post_date) ) ?></span>
+                  <p><?= $gallery->description ?></p>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+
+        <div class="row">
+          <?php foreach( $videos as $video ){ ?>
+            <div class="col-lg-6">
+              <div class="member d-flex align-items-start">
+                <?php $explode = explode( "v=", $video->link ); $id = $explode[1]; $source = "http://img.youtube.com/vi/" . $id . "/0.jpg" ?>
+                <div class="pic"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4><?= $video->title ?></h4>
+                  <a href="<?= $video->link ?>" target="_blank" class="btn btn-sm btn-outline-secondary">Tonton Video</a>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+
+      </div>
+    </section><!-- End Doctors Section -->
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Bidang</h2>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <?php $number = 1; foreach ($sectors as $sector) { ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($number == 1) echo 'active show' ?>" data-bs-toggle="tab" href="#<?= $sector->slug ?>"><?= $sector->name ?></a>
+                </li>
+              <?php $number++; } ?>
+            </ul>
+          </div>
+          <div class="col-lg-9">
+            <div class="tab-content">
+              <?php $number = 1; foreach ($sectors as $sector) { ?>
+                <div class="tab-pane <?php if($number == 1) echo 'active show' ?>" id="<?= $sector->slug ?>">
+                  <div class="row gy-4">
+                    <div class="details order-2 order-lg-1">
+                      <h3><?= $sector->name ?></h3>
+                      <?php
+                      if( file_exists( './uploads/sectors/' . $sector->file ) )
+                      {
+                          echo file_get_contents( './uploads/sectors/' . $sector->file );
+                      }
+                      ?>
+                    </div>
+                  </div>
+                </div>
+              <?php $number++; } ?>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Departments Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="kontak-kami" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Kontak Kami</h2>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Alamat:</h4>
+                <p><?= $alamat ?></p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p><?= $email ?></p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Telepon:</h4>
+                <p><?= $telepon ?></p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="<?= base_url('dashboard/send_message') ?>" method="post">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="text-center mt-3"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  

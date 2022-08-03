@@ -33,14 +33,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?= base_url('admin/facilities') ?>" class="nav-link" id="facilities_index">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Fasilitas
               </p>
             </a>
-          </li>
+          </li> -->
           <?php endif; ?>
           <li class="nav-item">
             <a href="<?= base_url('admin/sectors') ?>" class="nav-link" id="sectors_index">

@@ -26,7 +26,7 @@ class Sectors_model extends CI_Model {
     {
         if ( $id ) {
             // moduls
-            // $this->db->where(  'moduls.laboratory_id', $id );
+            // $this->db->where(  'moduls.sector_id', $id );
             // $this->db->delete( 'moduls' );
 
             $this->db->where( $this->_table . '.id', $id );

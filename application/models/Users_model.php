@@ -43,9 +43,9 @@ class Users_model extends CI_Model {
         return $this->users();
     }
 
-    public function users_laboratory( $laboratory_id = NULL )
+    public function users_laboratory( $sector_id = NULL )
     {
-        if ($laboratory_id) $this->db->where( $this->_table . '.laboratory_id', $laboratory_id );
+        if ($sector_id) $this->db->where( $this->_table . '.sector_id', $sector_id );
         return $this->users();
     }
 

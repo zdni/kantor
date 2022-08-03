@@ -21,14 +21,15 @@ class Dashboard extends Admin_Controller {
         $this->render('admin/dashboard');
     }
     
-    public function heros_create()
+    public function heros_edit()
     {
-        $this->form_validation->set_rules('name', 'File Gambar', 'required');
+        $this->form_validation->set_rules('id', 'File Gambar', 'required');
 
         $alert = 'error';
-        $message = 'Gagal Menambah Gambar Baru! <br> Silahkan isi semua inputan!';
+        $message = 'Gagal Mengubah Gambar Beranda! <br> Silahkan isi semua inputan!';
         if ( $this->form_validation->run() )
         {
+            $id = $this->input->post('id');
             $data['image'] = NULL;
 			if($_FILES['image']['name']){
                 $title = str_replace(" ", '', strtolower( $_FILES['image']['name'] ));
@@ -36,39 +37,16 @@ class Dashboard extends Admin_Controller {
 				$data['image'] = $uploaded_foto['file_name'];
 			}
             
-            if( $this->heros_model->create( $data ) )
+            if( $this->heros_model->update( $id, $data ) )
             {
                 $this->session->set_flashdata('alert', 'success');
-                $this->session->set_flashdata('message', 'Berhasil Membuat Gambar Baru!');
+                $this->session->set_flashdata('message', 'Berhasil Mengubah Gambar Baru!');
                 return redirect( base_url('admin/dashboard') );
             } else {
-                $message = 'Gagal Membuat Gambar Baru!';
+                $message = 'Gagal Mengubah Gambar Baru!';
             }
         }
 
-        $this->session->set_flashdata('alert', $alert);
-        $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/dashboard') );
-    }
-
-    public function heros_delete()
-    {
-        if( !$_POST ) return redirect( base_url('admin/dashboard') );
-
-        $alert = 'error';
-        $message = 'Gagal Menghapus Gambar!';
-
-        $this->form_validation->set_rules('id', 'Id Gambar', 'required');
-        if( $this->form_validation->run() )
-        {
-            $id = $this->input->post('id');
-            if( $this->heros_model->delete( $id ) )
-            {
-                $alert = 'success';
-                $message = 'Berhasil Menghapus Gambar!';
-            }
-        }
-        
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
         return redirect( base_url('admin/dashboard') );

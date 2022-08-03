@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html data-style-switcher-options="{'changeLogo': false, 'borderRadius': 0, 'colorPrimary': '#3467ef', 'colorSecondary': '#0e152f', 'colorTertiary': '#060c23', 'colorQuaternary': '#222529'}">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 		<title><?= $institut ?></title>	
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-        <link rel="icon" href="<?= base_url('assets/img/logo.png') ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-		<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" type="text/css">
+    <link rel="icon" href="<?= base_url('assets/img/logo.png') ?>">
 
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/fontawesome-free/css/all.min.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/animate/animate.compat.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/simple-line-icons/css/simple-line-icons.min.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/owl.carousel/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/owl.carousel/assets/owl.theme.default.min.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/magnific-popup/magnific-popup.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
 		<link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="<?= base_url('assets/visitor/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme-elements.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme-blog.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme-shop.css">
+    <link href="<?= base_url('assets/visitor/') ?>css/style.css" rel="stylesheet">
 
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/demos/demo-medical-2.css">
-		<link id="skinCSS" rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/skins/skin-medical-2.css">
-		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/custom.css">
-
-		<script src="<?= base_url('assets/visitor/') ?>vendor/modernizr/modernizr.min.js"></script>
-	</head>
+  </head>

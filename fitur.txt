@@ -13,9 +13,9 @@
 											galeri:
                                             	foto
 												video
-informasi:
+											informasi:
                                                 berita (1)
-	pengumuman
+												pengumuman
 											regulasi:
 												undang-undang
 												peraturan daerah
