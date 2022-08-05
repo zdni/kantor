@@ -7,7 +7,51 @@
 
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
-      <div class="container"></div>
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Why Choose Medilab?</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+              </p>
+              <div class="text-center">
+                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Corporis voluptates sit</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Ullamco laboris ladore pan</h4>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>Labore consequatur</h4>
+                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
     </section><!-- End Why Us Section -->
 
     <!-- ======= About Section ======= -->
@@ -33,39 +77,15 @@
       <div class="container">
 
         <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="fas fa-newspaper"></i>
-              <span data-purecounter-start="0" data-purecounter-end="<?= $total->article ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Berita</p>
+          <?php foreach ($counts as $count) { ?>
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="<?= $count->icon ?>"></i>
+                <span data-purecounter-start="0" data-purecounter-end="<?= $count->total ?>" data-purecounter-duration="1" class="purecounter"></span>
+                <p><?= $count->label ?></p>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="<?= $total->sector ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Bidang</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="<?= $total->gallery ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Galeri</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="<?= $total->document ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Regulasi</p>
-            </div>
-          </div>
-
+          <?php } ?>
         </div>
 
       </div>
@@ -122,6 +142,8 @@
           <?php } ?>
         </div>
 
+        <hr>
+
         <div class="row">
           <?php foreach( $videos as $video ){ ?>
             <div class="col-lg-6">
@@ -166,7 +188,7 @@
                     <div class="details order-2 order-lg-1">
                       <h3><?= $sector->name ?></h3>
                       <?php
-                      if( file_exists( './uploads/sectors/' . $sector->file ) )
+                      if( file_exists( './uploads/sectors/' . $sector->file ) && $sector->file )
                       {
                           echo file_get_contents( './uploads/sectors/' . $sector->file );
                       }
@@ -181,74 +203,6 @@
 
       </div>
     </section><!-- End Departments Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="kontak-kami" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Kontak Kami</h2>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Alamat:</h4>
-                <p><?= $alamat ?></p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p><?= $email ?></p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Telepon:</h4>
-                <p><?= $telepon ?></p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="<?= base_url('dashboard/send_message') ?>" method="post">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="text-center mt-3"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 

@@ -15,6 +15,33 @@ class Dashboard extends Admin_Controller {
 
 	public function index()
     {
+        $counts = [
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+        ];
+        $index = 1;
+        foreach ($counts as $count) {
+            // file label
+            if( file_exists( './uploads/counts/labels/label_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->label = file_get_contents( './uploads/counts/labels/label_' . $index . '.html' );
+            }
+            // file icon
+            if( file_exists( './uploads/counts/icons/icon_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->icon = file_get_contents( './uploads/counts/icons/icon_' . $index . '.html' );
+            }
+            // file total
+            if( file_exists( './uploads/counts/totals/total_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->total = file_get_contents( './uploads/counts/totals/total_' . $index . '.html' );
+            }
+            $index++;
+        }
+
+        $this->data['counts'] = $counts;
         $this->data['heros'] = $this->heros_model->heros()->result();
 
         $this->data['page'] = 'Beranda';
@@ -70,4 +97,37 @@ class Dashboard extends Admin_Controller {
 		}
 		return $uploaded_data;
 	}
+
+    public function count_update()
+    {
+        if( !$_POST ) return redirect( base_url('admin/dashboard') );
+
+        $file = $this->input->post('file');
+        $icon = $this->input->post('icon');
+        $total = $this->input->post('total');
+        $label = $this->input->post('label');
+
+        $alert = 'success';
+        $message = 'Berhasil!';
+        
+        if( !file_put_contents( './uploads/counts/labels/label_' . $file, $label ) )
+        {
+            $alert = 'warning';
+            $message = 'Gagal!';
+        }
+        if( !file_put_contents( './uploads/counts/icons/icon_' . $file, $icon ) )
+        {
+            $alert = 'warning';
+            $message = 'Gagal!';
+        } 
+        if( !file_put_contents( './uploads/counts/totals/total_' . $file, $total ) )
+        {
+            $alert = 'warning';
+            $message = 'Gagal!';
+        }
+
+        $this->session->set_flashdata('alert', $alert);
+        $this->session->set_flashdata('message', $message);
+        return redirect( base_url('admin/dashboard') );
+    }
 }

@@ -8,7 +8,7 @@
         <i class="bi bi-phone"></i> <?= $telepon ?>
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
-        <a href="">Login</a>
+        <a href="<?= base_url('auth/login') ?>">Login</a>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
               <?php } ?>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="<?= base_url('dashboard') ?>#kontak-kami">Kontak Kami</a></li>
+          <li><a class="nav-link scrollto" href="<?= base_url('dashboard/contact_us') ?>">Kontak Kami</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

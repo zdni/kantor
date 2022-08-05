@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <form action="<?= base_url('admin/laboratories/update') ?>" method="post">
+                <form action="<?= base_url('admin/sectors/update') ?>" method="post">
                   <div class="card-header">
                     <h5><?= $data->name ?></h5>
                   </div>

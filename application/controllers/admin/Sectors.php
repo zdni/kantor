@@ -8,7 +8,6 @@ class Sectors extends Uadmin_Controller {
         parent::__construct();
         $this->load->model([
             'sectors_model',
-            'moduls_model',
             'users_model',
             'videos_model'
         ]);
@@ -71,7 +70,7 @@ class Sectors extends Uadmin_Controller {
         $data = $this->sectors_model->sector( $id )->row();
         $data->file_content = '';
 
-        if( file_exists( './uploads/sectors/' . $data->file ) )
+        if( file_exists( './uploads/sectors/' . $data->file ) && $data->file )
         {
             $data->file_content = file_get_contents( './uploads/sectors/' . $data->file );
         }

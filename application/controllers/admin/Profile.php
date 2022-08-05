@@ -43,7 +43,7 @@ class Profile extends Admin_Controller {
         $this->data['profiles'] = $profiles;
         $this->data['datas'] = $datas;
         
-        $this->data['page'] = 'Profil Poltekkes';
+        $this->data['page'] = 'Profil';
         $this->render('admin/profile');
     }
 
@@ -154,5 +154,34 @@ class Profile extends Admin_Controller {
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
         return redirect( base_url('admin/profile') );
+    }
+
+    public function profile()
+    {
+        if( !$_POST ) return redirect( base_url('admin/profile') );
+
+        $alert = 'error';
+        $message = 'Gagal Mengubah Profil!';
+
+        $this->form_validation->set_rules('file', 'File Profil', 'required');
+        $this->form_validation->set_rules('file_content', 'Konten', 'required');
+        if( $this->form_validation->run() )
+        {
+            $file = $this->input->post('file');
+            $file_content = $this->input->post('file_content');
+            if( !file_put_contents( './uploads/profile/' . $file, $file_content ) )
+            {
+                $alert = 'warning';
+                $message = 'Gagal Mengubah File Profil!';
+            } else {
+                $alert = 'success';
+                $message = 'Berhasil Mengubah Profil Baru!';
+            }
+        }
+        
+        $this->session->set_flashdata('alert', $alert);
+        $this->session->set_flashdata('message', $message);
+        return redirect( base_url('admin/profile') );
+
     }
 }

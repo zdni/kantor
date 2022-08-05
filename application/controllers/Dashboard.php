@@ -33,12 +33,40 @@ class Dashboard extends Visitor_Controller
 
     public function index()
     {
+        // counts section
+        $counts = [
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+            (object) ['label' => '', 'icon' => '', 'total' => ''],
+        ];
+        $index = 1;
+        foreach ($counts as $count) {
+            // file label
+            if( file_exists( './uploads/counts/labels/label_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->label = file_get_contents( './uploads/counts/labels/label_' . $index . '.html' );
+            }
+            // file icon
+            if( file_exists( './uploads/counts/icons/icon_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->icon = file_get_contents( './uploads/counts/icons/icon_' . $index . '.html' );
+            }
+            // file total
+            if( file_exists( './uploads/counts/totals/total_' . $index . '.html' ) )
+            {
+                $counts[$index-1]->total = file_get_contents( './uploads/counts/totals/total_' . $index . '.html' );
+            }
+            $index++;
+        }
+
         $profile = $this->profile_model->profile()->row();
 
         if( file_exists( './uploads/profile/' . $profile->file ) )
         {
             $profile->file_content = file_get_contents( './uploads/profile/' . $profile->file );
         }
+
         $this->data['profile'] = $profile;
         $this->data['total'] = (object) [
             'document' => $this->documents_model->documents()->num_rows(),
@@ -46,6 +74,7 @@ class Dashboard extends Visitor_Controller
             'article' => $this->articles_model->articles()->num_rows(),
             'gallery' => $this->galleries_model->galleries()->num_rows(),
         ];
+        $this->data['counts'] = $counts;
         $this->data['sectors'] = $this->sectors_model->sectors()->result();
         $this->data['articles'] = $this->articles_model->articles( 0, 3 )->result();
         $this->data['heros'] = $this->heros_model->heros()->result();
@@ -80,7 +109,7 @@ class Dashboard extends Visitor_Controller
         $sector = $this->sectors_model->sector( NULL, $slug )->row();
         $sector->file_content = '';
 
-        if( file_exists( './uploads/sectors/' . $sector->file ) )
+        if( file_exists( './uploads/sectors/' . $sector->file ) && $sector->file )
         {
             $sector->file_content = file_get_contents( './uploads/sectors/' . $sector->file );
         }
@@ -183,6 +212,11 @@ class Dashboard extends Visitor_Controller
     {
         $this->data['facilities'] = $this->facilities_model->facilities()->result();
         $this->render('facilities');
+    }
+
+    public function contact_us()
+    {
+        $this->render('contact_us');
     }
     
     public function send_message()

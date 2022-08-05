@@ -1,7 +1,7 @@
       <!-- ======= Footer ======= -->
       <footer id="footer">
 
-      <div class="footer-top">
+      <div class="footer-top" style="background: #f1f7fd !important">
         <div class="container">
         <div class="row">
 

@@ -66,6 +66,32 @@
                 </div>
               </div>
             </div>
+            <?php $number = 1; foreach ($counts as $count) { ?>
+              <div class="col-md-3 col-12">
+                <div class="card">
+                  <form action="<?= base_url('admin/dashboard/count_update')  ?>" method="post">
+                    <div class="card-body">
+                      <input type="hidden" name="file" id="file" value="<?= $number . '.html' ?>">
+                      <div class="form-group">
+                        <label for="">Icon</label>
+                        <input type="text" name="icon" id="icon" class="form-control" placeholder="contoh: far fa-hospital" value="<?= $count->icon ?>" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Total</label>
+                        <input type="number" name="total" id="total" class="form-control" value="<?= $count->total ?>" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Label</label>
+                        <input type="text" name="label" id="label" class="form-control" value="<?= $count->label ?>" required>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            <?php $number++; } ?>
           </div>
         </div>
       </div>
