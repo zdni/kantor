@@ -19,11 +19,12 @@ class Dashboard extends Visitor_Controller
             'videos_model',
         ]);
 
-        $this->data['alamat'] = file_get_contents( './uploads/profile/alamat.html' );
-        $this->data['email'] = file_get_contents( './uploads/profile/email.html' );
-        $this->data['fax'] = file_get_contents( './uploads/profile/fax.html' );
+        $this->data['alamat']   = file_get_contents( './uploads/profile/alamat.html' );
+        $this->data['email']    = file_get_contents( './uploads/profile/email.html' );
+        $this->data['fax']      = file_get_contents( './uploads/profile/fax.html' );
         $this->data['institut'] = file_get_contents( './uploads/profile/institut.html' );
-        $this->data['telepon'] = file_get_contents( './uploads/profile/telepon.html' );
+        $this->data['telepon']  = file_get_contents( './uploads/profile/telepon.html' );
+        $this->data['logo']     = file_get_contents( './uploads/profile/logo.html' );
 
         $sectors = $this->sectors_model->sectors()->result();
         $this->data['menu_downloads'] = $this->downloads_model->downloads()->result();
@@ -76,11 +77,18 @@ class Dashboard extends Visitor_Controller
         ];
         $this->data['counts'] = $counts;
         $this->data['sectors'] = $this->sectors_model->sectors()->result();
-        $this->data['articles'] = $this->articles_model->articles( 0, 3 )->result();
-        $this->data['heros'] = $this->heros_model->heros()->result();
+        $this->data['articles'] = $this->articles_model->articles( 0, 9 )->result();
         $this->data['galleries'] = $this->galleries_model->galleries( 0, 2 )->result();
         $this->data['videos'] = $this->videos_model->videos( NULL, 0, 2 )->result();
         
+        $heros = $this->heros_model->heros()->result();
+        $this->data['about'] = $heros[0];
+        $this->data['popup'] = $heros[1];
+
+        unset( $heros[0] );
+        unset( $heros[1] );
+        $this->data['heros'] = $heros;
+
         $this->render('index');
     }
 
@@ -221,26 +229,17 @@ class Dashboard extends Visitor_Controller
     
     public function send_message()
     {
-        $this->form_validation->set_rules('name', 'Nama', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('phone', 'Nomor Telepon', 'required');
-        $this->form_validation->set_rules('subject', 'Subjek Pesan', 'required');
+        $this->form_validation->set_rules('rating', 'Penilaian', 'required');
         $this->form_validation->set_rules('message', 'Pesan', 'required');
 
         $alert = 'error';
         $message = 'Gagal Mengirim Pesan! <br> Silahkan isi semua inputan!';
         if ( $this->form_validation->run() )
         {
-            $name = $this->input->post('name');
-            $email = $this->input->post('email');
-            $phone = $this->input->post('phone');
-            $subject = $this->input->post('subject');
+            $rating = $this->input->post('rating');
             $message = $this->input->post('message');
 
-            $data['name'] = $name;
-            $data['email'] = $email;
-            $data['phone'] = $phone;
-            $data['subject'] = $subject;
+            $data['rating'] = $rating;
             $data['message'] = $message;
             $data['date'] = date('Y-m-d');
 
@@ -248,7 +247,7 @@ class Dashboard extends Visitor_Controller
             if( $this->messages_model->create( $data ) )
             {
                 $alert = 'success';
-                $message = 'Berhasil Mengirim Pesan!';
+                $message = 'Terima Kasih Atas Penilaian Anda!';
             } else {
                 $message = 'Gagal Mengirim Pesan!';
             }

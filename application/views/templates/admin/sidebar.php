@@ -1,6 +1,6 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="<?= base_url() ?>" class="brand-link">
-      <img src="<?= base_url('assets/') ?>img/logo.png" alt="Logo Kantor" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="<?= base_url('uploads/logo/') . $logo ?>" alt="Logo Kantor" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Kantor</span>
     </a>
 
@@ -63,7 +63,7 @@
             <a href="<?= base_url('admin/announcements') ?>" class="nav-link" id="announcements_index">
               <i class="nav-icon fas fa-bullhorn"></i>
               <p>
-                Pengumuman
+                Informasi
               </p>
             </a>
           </li>
@@ -97,7 +97,7 @@
             <a href="<?= base_url('admin/messages') ?>" class="nav-link" id="messages_index">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Pesan Pengunjung
+                Jejak Pendapat
               </p>
             </a>
           </li>

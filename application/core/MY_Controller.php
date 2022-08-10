@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller {
 	   $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? base_url('uploads/users/') . $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
 	   $this->data["username"] = ( $this->session->userdata( 'username' ) != "" ) ? $this->session->userdata( 'username' ) : "User" ;
 	   $this->data["name"] = ( $this->session->userdata( 'name' ) != "" ) ? $this->session->userdata( 'name' ) : "User" ;
+       $this->data['logo']     = file_get_contents( './uploads/profile/logo.html' );
     }
 
     protected function render( $view = NULL, $template = NULL ) {

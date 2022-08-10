@@ -18,7 +18,7 @@
                 <form action="<?= $url ?>" method="post" enctype="multipart/form-data">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="">Judul Pengumuman</label>
+                      <label for="">Judul Informasi</label>
                       <input type="text" name="title" id="title" class="form-control" value="<?= isset( $data ) ? $data->title : "" ?>">
                     </div>
                     <div class="form-group">
@@ -28,7 +28,7 @@
                         <input type="hidden" name="filename" name="filename" value="<?= $data->file ?>" class="form-control">
                         <img src="<?= base_url('uploads/announcements/thumbnails/') . $data->thumbnail ?>" width="120px" alt="Thumbnail Pengumuman"><br>
                       <?php endif; ?>
-                      <label for="">Thumbnail Pengumuman</label>
+                      <label for="">Thumbnail Informasi</label>
                       <input type="file" name="thumbnail" id="thumbnail" class="form-control">
                     </div>
                     <div class="form-group">
@@ -45,7 +45,7 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary">Simpan Pengumuman</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Simpan Informasi</button>
                   </div>
                 </form>
               </div>

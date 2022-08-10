@@ -15,14 +15,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h5>Daftar Pengumuman</h5>
-                  <a href="<?= base_url('admin/announcements/form') ?>" class="btn btn-sm btn-primary">Tambah Pengumuman</a>
+                  <h5>Daftar Informasi</h5>
+                  <a href="<?= base_url('admin/announcements/form') ?>" class="btn btn-sm btn-primary">Tambah Informasi</a>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-hover table-data">
                     <thead>
                       <th>No.</th>
-                      <th>Judul Pengumuman</th>
+                      <th>Judul Informasi</th>
                       <th>Tanggal Posting</th>
                       <th>Aksi</th>
                     </thead>
@@ -41,18 +41,18 @@
                                 <div class="modal-content">
                                   <form action="<?= base_url('admin/announcements/delete') ?>" method="post">
                                     <div class="modal-header">
-                                      <h4 class="modal-title">Hapus Pengumuman</h4>
+                                      <h4 class="modal-title">Hapus Informasi</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
                                       <input type="hidden" name="id" id="id" class="form-control" required value="<?= $data->id ?>">
-                                      <p>Yakin ingin menghapus Pengumuman <?= $data->title ?></p>
+                                      <p>Yakin ingin menghapus Informasi <?= $data->title ?></p>
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                       <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-                                      <button type="submit" class="btn btn-sm btn-danger">Hapus Pengumuman</button>
+                                      <button type="submit" class="btn btn-sm btn-danger">Hapus Informasi</button>
                                     </div>
                                   </form>
                                 </div>

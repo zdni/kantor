@@ -15,32 +15,24 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h5>Pesan Pengunjung</h5>
+                  <h5>Jejak Pendapat</h5>
                 </div>
                 <div class="card-body">
                   <table class="table table-striped table-bordered table-hover table-data">
                     <thead>
                       <th>No</th>
-                      <th>Pengunjung</th>
-                      <th>Subjek</th>
+                      <th>Penilaian</th>
                       <th>Pesan</th>
-                      <th>Aksi</th>
                     </thead>
                     <tbody>
                       <?php $number = 1; foreach($datas as $data) { ?>
                         <tr>
                           <td><?= $number ?></td>
                           <td>
-                            <p>Pengunjung: <?= $data->name ?></p>
-                            <span class="badge badge-info">Email: <?= $data->email ?></span>
-                            <span class="badge badge-secondary">Telepon: <?= $data->phone ?></span>
+                            <p><?= $data->rating ?></p>
+                            <span class="badge badge-info"><?= date( "d M Y", strtotime( $data->date ) ) ?></span>
                           </td>
-                          <td><?= $data->subject ?></td>
                           <td><?= $data->message ?></td>
-                          <td><?= date( "d M Y", strtotime( $data->date ) ) ?></td>
-                          <td>
-                            <a href="https://mail.google.com/mail/u/0/?fs=1&to=<?= $data->email ?>&tf=cm" class="btn btn-sm btn-outline-info" target="_blank">Kirim Balasan Email</a>
-                          </td>
                         </tr>
                       <?php $number++; } ?>
                     </tbody>

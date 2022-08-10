@@ -9,6 +9,7 @@ class Profile extends Admin_Controller {
         $this->load->model([
             'profile_model',
         ]);
+		$this->load->library('upload');
 	}
 
 	public function index()
@@ -41,7 +42,8 @@ class Profile extends Admin_Controller {
         }
         
         $this->data['profiles'] = $profiles;
-        $this->data['datas'] = $datas;
+        $this->data['datas']    = $datas;
+        $this->data['logo']     = file_get_contents( './uploads/profile/logo.html' );
         
         $this->data['page'] = 'Profil';
         $this->render('admin/profile');
@@ -184,4 +186,44 @@ class Profile extends Admin_Controller {
         return redirect( base_url('admin/profile') );
 
     }
+
+    public function update_logo()
+    {
+        if( !$_POST ) return redirect( base_url('admin/profile') );
+
+        $alert = 'warning';
+        $message = 'Gagal Mengubah Logo!';
+        $file = $this->input->post('file');
+        if( $_FILES['logo']['name'] ) {
+            $uploaded_data = $this->upload_image();
+            if( file_put_contents( './uploads/profile/' . $file, $uploaded_data['file_name'] ) )
+            {
+                $alert = 'success';
+                $message = 'Berhasil Mengubah Logo!';
+            }
+        }
+        
+        $this->session->set_flashdata('alert', $alert);
+        $this->session->set_flashdata('message', $message);
+        return redirect( base_url('admin/profile') );
+    }
+
+	public function upload_image(  )
+	{
+		$config['upload_path']          = './uploads/logo/';
+		$config['overwrite']            = true;
+		$config['allowed_types']        = 'png';
+		$config['max_size']             = 2048;
+		$config['file_name']			= 'logo';
+
+		$this->upload->initialize($config);
+		if (!$this->upload->do_upload('logo')) {
+			$this->session->set_flashdata('alert', 'error');   
+			$this->session->set_flashdata('message', $this->upload->display_errors());   
+			return redirect( base_url('admin/profile') );
+		} else {
+            $uploaded_data = $this->upload->data();
+		}
+		return $uploaded_data;
+	}
 }

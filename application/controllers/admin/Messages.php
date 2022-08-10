@@ -14,7 +14,7 @@ class Messages extends Uadmin_Controller {
 	public function index()
     {
         $this->data['datas'] = $this->messages_model->messages()->result();
-        $this->data['page'] = 'Pesan Pengunjung';
+        $this->data['page'] = 'Jejak Pendapat';
         $this->render('admin/messages');
     }
 }

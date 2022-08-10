@@ -7,7 +7,7 @@
           <h2><?= $announcement->title ?></h2>
           <ol>
             <li><a href="<?= base_url() ?>">Beranda</a></li>
-            <li><a href="<?= base_url('dashboard/announcements') ?>">Pengumuman</a></li>
+            <li><a href="<?= base_url('dashboard/announcements') ?>">Informasi</a></li>
           </ol>
         </div>
 

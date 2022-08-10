@@ -32,6 +32,21 @@
                     </div>
                   </div>
                 <?php } ?>
+                <div class="col-md-6 col-12">
+                  <div class="card mb-5">
+                    <form action="<?= base_url('admin/profile/update_logo') ?>" method="post" enctype="multipart/form-data">
+                      <div class="card-body">
+                        <img src="<?= base_url('uploads/logo/') . $logo ?>" alt="" style="height: 50px">
+                        <input type="hidden" name="file" id="file" value="logo.html">
+                        <div class="form-group">
+                          <label for="">File Logo <span class="text-danger">(file PNG)</span></label>
+                          <input type="file" name="logo" id="logo" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
               <div class="card mb-5">
                 <form action="<?= base_url('admin/profile/create') ?>" method="post">

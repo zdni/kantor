@@ -1,27 +1,35 @@
       <!-- ======= Footer ======= -->
       <footer id="footer">
 
-      <div class="footer-top" style="background: #f1f7fd !important">
+      <div class="footer-top" style="background: #e4f5fd !important">
         <div class="container">
         <div class="row">
-
           <div class="col-lg-3 col-md-6 footer-contact">
-          <h3><?= $institut ?></h3>
-          <p>
-            <?= $alamat ?><br><br>
-            <strong>Phone:</strong> <?= $telepon ?><br>
-            <strong>Email:</strong> <?= $email ?><br>
-          </p>
+            <h3><?= $institut ?></h3>
+            <p>
+              <?= $alamat ?><br><br>
+              <strong>Phone:</strong> <?= $telepon ?><br>
+              <strong>Email:</strong> <?= $email ?><br>
+            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Link</h4>
-          <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url() ?>">Beranda</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Tentang Kami</a></li>
-          </ul>
+            <h4>Link Terkait</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.kemenkeu.go.id/">Kemenkeu RI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.bpkp.go.id/">BPKP RI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.kemendagri.go.id/">Kemendagri RI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.sultraprov.go.id/">Pemprov Sultra</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="http://lpse.konaweutarakab.go.id/">LPSE Konut</a></li>
+            </ul>
           </div>
-
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Link Sosial Media</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
+            </ul>
+          </div>
         </div>
         </div>
       </div>
@@ -33,7 +41,7 @@
           &copy; Copyright <strong><span>2022</span></strong>
         </div>
         <div class="credits">
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          Designed by <a href="https://bkad.konaweutarakab.go.id">BKAD Konawe Utara</a>
         </div>
         </div>
       </div>
