@@ -32,9 +32,12 @@ class Documents extends Uadmin_Controller {
         if ( $this->form_validation->run() )
         {
             $title = $this->input->post('title');
+            $category_id = $this->input->post('category_id');
+            $category = $this->input->post('category');
             $download_id = $this->input->post('download_id');
 
             $data['title'] = $title;
+            $data['category'] = ( $category != NULL ) ? $category : $category_id;
             $data['download_id'] = $download_id;
 
             $slug = str_replace( " ", "_", $title );
@@ -47,7 +50,7 @@ class Documents extends Uadmin_Controller {
 				$uploaded_file = $this->upload_file( $slug );
 				$data['file'] = $uploaded_file['file_name'];
 			}
-			
+
             if( $this->documents_model->create( $data ) )
             {
                 $alert = 'success';
@@ -67,6 +70,7 @@ class Documents extends Uadmin_Controller {
     {
         if( !$download_id ) return redirect( base_url('admin/documents/') );
 
+        $this->data['categories'] = $this->documents_model->get_categories()->result();
         $this->data['menu'] = $this->downloads_model->downloads( $download_id )->row();
         $this->data['datas'] = $this->documents_model->documents( $download_id )->result();
         $this->data['download_id'] = $download_id;
@@ -89,9 +93,12 @@ class Documents extends Uadmin_Controller {
             $id = $this->input->post('id');
             $title = $this->input->post('title');
             $slug = $this->input->post('slug');
+            $category_id = $this->input->post('category_id');
+            $category = $this->input->post('category');
             $download_id = $this->input->post('download_id');
 
             $data['title'] = $title;
+            $data['category'] = ( $category != NULL ) ? $category : $category_id;
 			if($_FILES['file']['name']){
 				$uploaded_file = $this->upload_file( $slug );
 				$data['file'] = $uploaded_file['file_name'];

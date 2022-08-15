@@ -210,9 +210,17 @@ class Dashboard extends Visitor_Controller
     public function documents( $download_id = NULL )
     {
         if( !$download_id ) return redirect( base_url() );
+        $datas = [];
         $this->data['download'] = $this->downloads_model->download( $download_id )->row();
-        $this->data['documents'] = $this->documents_model->documents( $download_id )->result();
-    
+        $documents = $this->documents_model->documents( $download_id )->result();
+        foreach ($documents as $document) {
+            if( array_key_exists( $document->category, $datas ) ) {
+                $datas[$document->category][] = $document;
+            } else {
+                $datas[$document->category] = [$document];
+            }
+        }
+        $this->data['datas'] = $datas;
         $this->render('documents');
     }
 

@@ -35,6 +35,20 @@
                               <input type="text" name="title" id="title" class="form-control" required>
                             </div>
                             <div class="form-group">
+                              <label for="">Kategori</label>
+                              <select name="category_id" id="category_id" class="form-control">
+                                <option value="">-- Pilih Kategori --</option>
+                                <?php foreach ($categories as $category) { ?>
+                                  <option value="<?= $category->category ?>"><?= $category->category ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="">Kategori Baru</label>
+                              <input type="text" name="category" id="category" class="form-control">
+                              <span style="font-size: 10px; color: red; font-weight: bold; display: block;">Isi inputan diatas ini bila kategori yang diinginkan tidak ada dalam daftar kategori</span>
+                            </div>
+                            <div class="form-group">
                               <label for="">File</label>
                               <input type="file" name="file" id="file" class="form-control" required>
                             </div>
@@ -80,6 +94,20 @@
                                       <div class="form-group">
                                         <label for="">Judul Dokumen</label>
                                         <input type="text" name="title" id="title" class="form-control" required value="<?= $data->title ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="">Kategori</label>
+                                        <select name="category_id" id="category_id" class="form-control">
+                                          <option value="">-- Pilih Kategori --</option>
+                                          <?php foreach ($categories as $category) { ?>
+                                            <option value="<?= $category->category ?>" <?php if( $category->category == $data->category ) echo 'selected' ?> ><?= $category->category ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="">Kategori Baru</label>
+                                        <input type="text" name="category" id="category" class="form-control">
+                                        <span style="font-size: 10px; color: red; font-weight: bold; display: block;">Isi inputan diatas ini bila kategori yang diinginkan tidak ada dalam daftar kategori</span>
                                       </div>
                                       <div class="form-group">
                                         <label for="">File</label>

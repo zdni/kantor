@@ -43,6 +43,12 @@ class Documents_model extends CI_Model {
         if( $download_id ) $this->db->where( 'download_id', $download_id );
         return $this->db->get( $this->_table );
     }
+
+    public function get_categories()
+    {
+        $this->db->select( "DISTINCT(" . $this->_table . '.category)' );
+        return $this->db->get( $this->_table );
+    }
 }
 
 ?>

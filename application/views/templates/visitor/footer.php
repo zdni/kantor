@@ -23,12 +23,19 @@
               <li><i class="bx bx-chevron-right"></i> <a href="http://lpse.konaweutarakab.go.id/">LPSE Konut</a></li>
             </ul>
           </div>
-          <div class="col-lg-4 col-md-6 footer-links">
+          <div class="col-lg-4 col-md-6 social-links">
             <h4>Link Sosial Media</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
-            </ul>
+            <a href="" class="facebook">
+              <i class="bx bxl-facebook"></i>
+            </a>
+            <a href="" class="instagram">
+              <i class="bx bxl-instagram"></i>
+            </a>
+            <a href="" class="twitter">
+              <i class="bx bxl-twitter"></i>
+            </a>
+            <a href="" class="youtube">
+              <i class="bx bxl-youtube"></i>
           </div>
         </div>
         </div>

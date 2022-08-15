@@ -16,19 +16,21 @@
 
     <section class="services">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-              <?php foreach ($documents as $document) { ?>
+        <?php foreach ($datas as $key => $documents) { ?>
+          <div class="row mb-5">
+            <div class="col-12">
+              <h3><?= $key ?></h3>
+            </div>
+            <?php foreach ($documents as $document) { ?>
+              <div class="col-lg-3 col-md-4">
                 <div class="icon-box">
                   <div class="icon"><i class="fas fa-file"></i></div>
-                    <h4><a href="<?= base_url('uploads/documents/') . $document->file ?>" target="_blank" ><?= $document->title ?></a></h4>
-                  </div>
+                  <h4><a href="<?= base_url('uploads/documents/') . $document->file ?>" target="_blank" ><?= $document->title ?></a></h4>
                 </div>
-              <?php } ?>
-            </div>
+              </div>
+            <?php } ?>
           </div>
-        </div>
+        <?php } ?>
       </div>
     </section>
 
