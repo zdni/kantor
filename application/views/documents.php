@@ -19,7 +19,7 @@
         <?php foreach ($datas as $key => $documents) { ?>
           <div class="row mb-5">
             <div class="col-12">
-              <h3><?= $key ?></h3>
+              <h5 style="background-color: #1D84E3; border-radius: 28px; text-align: center; padding: 8px 0px; color: white;"><?= $key ?></h5>
             </div>
             <?php foreach ($documents as $document) { ?>
               <div class="col-lg-3 col-md-4">

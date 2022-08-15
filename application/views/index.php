@@ -206,7 +206,7 @@
           <?php foreach( $galleries as $gallery ){ ?>
             <div class="col-lg-6">
               <div class="member d-flex align-items-start">
-                <div class="pic"><img src="<?= base_url('uploads/galleries/') . $gallery->image ?>" class="img-fluid" alt=""></div>
+                <div class="pic" style="border-radius: 0px;"><img src="<?= base_url('uploads/galleries/') . $gallery->image ?>" class="img-fluid" alt=""></div>
                 <div class="member-info">
                   <h4><?= $gallery->title ?></h4>
                   <span><?= date( 'd M Y', strtotime($gallery->post_date) ) ?></span>
@@ -226,7 +226,7 @@
             <div class="col-lg-6">
               <div class="member d-flex align-items-start">
                 <?php $explode = explode( "v=", $video->link ); $id = $explode[1]; $source = "http://img.youtube.com/vi/" . $id . "/0.jpg" ?>
-                <div class="pic"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
+                <div class="pic" style="border-radius: 0px;"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
                 <div class="member-info">
                   <h4><?= $video->title ?></h4>
                   <a href="<?= $video->link ?>" target="_blank" class="btn btn-sm btn-outline-secondary">Tonton Video</a>
