@@ -23,11 +23,11 @@
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
               <?php if( $title == 'Galeri Foto' ): ?>
-                <div class="pic"><img src="<?= base_url('uploads/galleries/') . $data->image ?>" class="img-fluid" alt=""></div>
+                <div class="pic" style="border-radius: 0px;"><img src="<?= base_url('uploads/galleries/') . $data->image ?>" class="img-fluid" alt=""></div>
               <?php endif; ?>
               <?php if( $title == 'Galeri Video' ): ?>
                 <?php $explode = explode( "v=", $data->link ); $id = $explode[1]; $source = "http://img.youtube.com/vi/" . $id . "/0.jpg" ?>
-                <div class="pic"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
+                <div class="pic" style="border-radius: 0px;"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
               <?php endif; ?>
               <div class="member-info">
                 <h4><?= $data->title ?></h4>
