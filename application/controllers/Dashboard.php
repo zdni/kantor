@@ -147,6 +147,17 @@ class Dashboard extends Visitor_Controller
         $this->render('gallery');
     }
 
+    public function galleries( $gallery_id )
+    {
+        $data = $this->galleries_model->gallery( $gallery_id )->row();
+
+        $title = 'Detail Galeri Foto';
+        $this->data['title'] = $title;
+        $this->data['data'] = $data;
+        $this->render('detail_gallery');
+
+    }
+
     public function articles()
     {
         $page = isset( $_GET['page'] ) ? $_GET['page'] : 0;

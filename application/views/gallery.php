@@ -30,12 +30,15 @@
                 <div class="pic" style="border-radius: 0px;"><img src="<?= $source ?>" class="img-fluid" alt=""></div>
               <?php endif; ?>
               <div class="member-info">
-                <h4><?= $data->title ?></h4>
                 <?php if( $title == 'Galeri Foto' ): ?>
+                  <a href="<?= base_url('dashboard/galleries/') . $data->id ?>">
+                    <h4><?= $data->title ?></h4>
+                  </a>
                   <span><?= date( 'd M Y', strtotime($data->post_date) ) ?></span>
                   <p><?= $data->description ?></p>
                 <?php endif; ?>
                 <?php if( $title == 'Galeri Video' ): ?>
+                  <h4><?= $data->title ?></h4>
                   <a href="<?= $data->link ?>" target="_blank" class="btn btn-sm btn-outline-secondary">Tonton Video</a>
                 <?php endif; ?>
               </div>
